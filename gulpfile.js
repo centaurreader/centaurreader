@@ -11,7 +11,7 @@ var globs = {
   fonts: ['./src/fonts/*.*'],
   imgs: ['./src/img/**'],
   layout: ['./src/layout/*.html'],
-  partials: ['./src/partials/*.html'],
+  partials: ['./src/partials/*.hbs'],
   views: ['./src/views/*.html']
 };
 var outputDir = './dist';
@@ -25,7 +25,6 @@ function handleErrors() {
   this.emit('end');
 }
 
-var pages = require('./pages.json').pages;
 gulp.task('views_incude', function () {
   var wrap = require('gulp-wrap');
   var include = require('gulp-file-include');
@@ -43,16 +42,15 @@ gulp.task('views_incude', function () {
 });
 gulp.task('views', ['views_incude'], function () {
   var rename = require('gulp-rename');
-  var handlebars = require('gulp-compile-handlebars');
+  var handlebars = require('gulp-hb');
 
-  for (var i = 0; i < pages.length; i++) {
-    var page = pages[i];
-    var filename = page.filename;
-    gulp.src('./tmp/' + filename)
-      .pipe(handlebars(page))
-      .pipe(gulp.dest(outputDir))
-      .pipe(reload({ stream: true }));
-  }
+  gulp.src('./tmp/*.html')
+    .pipe(handlebars({
+      partials: './src/partials/*.hbs',
+      data: './src/data/*.{js,json}'
+    }))
+    .pipe(gulp.dest(outputDir))
+    .pipe(reload({ stream: true }));
 });
 
 gulp.task('css', function () {
