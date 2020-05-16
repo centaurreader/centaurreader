@@ -29,6 +29,31 @@ h1 {
 	font-weight: bold;
 }
 
+h2 {
+  margin: 0;
+  padding-left: 16px;
+}
+
+@media all and (max-width: 699px) {
+  h1 {
+    font-size: 450%;
+  }
+}
+
+@media all and (min-width: 700px) and (max-width: 1000px) {
+  h1 {
+    font-size: 900%;
+  }
+}
+
+a {
+  text-decoration: underline;
+}
+a:visited {
+  color: blue;
+}
+
+li,
 address {
   flex: 0;
   align-self: flex-start;
@@ -42,18 +67,18 @@ address {
   font-style: italic;
 }
 
-a {
-	text-decoration: underline;
+ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
 }
 
-@media all and (max-width: 699px) {
-	h1 {
-		font-size: 450%;
-	}
-}
-
-@media all and (min-width: 700px) and (max-width: 1000px) {
-	h1 {
-		font-size: 900%;
-	}
+@media all and (min-width: 699px) {
+  ul {
+    flex-direction: row;
+  }
+  li {
+    margin: 0 24px;
+  }
 }
