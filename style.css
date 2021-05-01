@@ -1,6 +1,6 @@
 html { height: 100%; }
 body {
-	height: 100%;
+	height: 99%;
   background-image: url('untitled.jpg');
   background-size: cover;
 	font-family: tahoma, geneva, helvetica, sans-serif;
@@ -55,21 +55,17 @@ a:visited {
 
 li,
 address {
-  flex: 0;
+  align-items: center;
   align-self: flex-start;
-  display: inline-block;
-  margin: 24px;
-  border-radius: 200px;
+  display: flex;
+  margin: 0px;
   padding: 8px 16px;
-  background-color: white;
-  font-size: .75em;
-  letter-spacing: .25em;
-  font-style: italic;
 }
 
 ul {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   list-style-type: none;
   padding: 0;
 }
@@ -79,6 +75,26 @@ ul {
     flex-direction: row;
   }
   li {
-    margin: 0 24px;
+    margin: 8px 24px;
   }
+}
+
+li img {
+  height: 32px;
+  margin-right: 16px;
+  width: 32px;
+}
+
+address,
+li a {
+  border-radius: 200px;
+  padding: 8px 16px;
+  background-color: white;
+  font-size: .75em;
+  letter-spacing: .25em;
+  font-style: italic;
+}
+
+address {
+  margin: 16px 0;
 }
